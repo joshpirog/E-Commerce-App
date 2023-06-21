@@ -1,5 +1,5 @@
-//const expressLoader = require('./express');
-//const passportLoader = require('./passport');
+const expressLoader = require('./express');
+const passportLoader = require('./passport');
 const routeLoader = require('../routes');
 //const swaggerLoader = require('./swagger');
 //const swagger = require('./swagger');
@@ -7,13 +7,13 @@ const routeLoader = require('../routes');
 module.exports = async (app) => {
 
   // Load Express middlewares
-  //const expressApp = await expressLoader(app);
+  const expressApp = await expressLoader(app);
 
   // Load Passport middleware
-  //const passport = await passportLoader(expressApp);
+  const passport = await passportLoader(expressApp);
 
   // Load API route handlers
-  await routeLoader(app);
+  await routeLoader(app, passport);
 
   // Load Swagger
   //await swaggerLoader(app);

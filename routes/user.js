@@ -12,7 +12,7 @@ module.exports = (app) => {
 
     try {
       const { userId } = req.params;
-    
+      
       const response = await UserServiceInstance.get({ id: userId });
       res.status(200).send(response);
     } catch(err) {

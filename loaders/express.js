@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const session = require('express-session');
-const { SESSION_SECRET } = require('../config');
+//const { SESSION_SECRET } = require('../config');
 
 module.exports = (app) => {
 
@@ -20,7 +20,7 @@ module.exports = (app) => {
   // Creates a session
   app.use(
     session({  
-      secret: SESSION_SECRET,
+      secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
       cookie: {
