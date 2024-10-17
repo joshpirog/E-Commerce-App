@@ -1,14 +1,14 @@
 const db = require('../db');
 const pgp = require('pg-promise')({ capSQL: true });
 
-module.exports = class ProductModel {
+module.exports = {
 
   /**
    * List products
    * @param  {Object} options [Query options]
    * @return {Array}          [Array of products]
    */
-  async find(options = {}) {
+  find: async function(options = {}) {
     try {
 
       const statement = `SELECT *
@@ -26,14 +26,14 @@ module.exports = class ProductModel {
     } catch(err) {
       throw err;
     }
-  }
+  },
 
   /**
    * Retrieve product by ID
    * @param  {Object}      id [Product ID]
    * @return {Object|null}    [Product record]
    */
-  async findOne(id) {
+  findOne: async function(id) {
     try {
 
       const statement = `SELECT *
@@ -52,9 +52,9 @@ module.exports = class ProductModel {
     } catch(err) {
       throw err;
     }
-  }
+  },
 
-  async create(data) {
+  create: async function(data) {
     try {
 
         // Generate SQL statement - using helper for dynamic parameter injection

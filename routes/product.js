@@ -1,8 +1,11 @@
+const createError = require('http-errors');
 const express = require('express');
 const router = express.Router();
 
-const ProductService = require('../services/ProductService');
-const ProductServiceInstance = new ProductService();
+// const ProductService = require('../services/ProductService');
+// const ProductServiceInstance = new ProductService();
+
+const ProductModel = require('../models/product');
 
 module.exports = (app) => {
 
@@ -13,7 +16,7 @@ module.exports = (app) => {
     
           const queryParams = req.query;
     
-          const response = await ProductServiceInstance.list(queryParams);
+          const response = await ProductModel.find(queryParams);
           res.status(200).send(response);
         } catch(err) {
           next(err);
@@ -24,8 +27,12 @@ module.exports = (app) => {
         try {
           const { productId } = req.params;
     
-          const response = await ProductServiceInstance.get(productId);
-    
+          const response = await ProductModel.findOne(productId);
+          
+          if (!response) {
+            throw createError(404, 'Product not found');
+          }
+
           res.status(200).send(response);
         } catch(err) {
           next(err);
@@ -34,10 +41,9 @@ module.exports = (app) => {
 
       router.post('/', async (req, res, next) => {
         try {
-            console.log("yeah");
             const data = req.body;
-            console.log(data);
-            const response = await ProductServiceInstance.create(data);
+
+            const response = await ProductModel.create(data)
 
             res.status(200).send(response);
         } catch(err) {
