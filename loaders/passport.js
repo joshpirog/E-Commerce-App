@@ -23,7 +23,6 @@ module.exports = async (app) => {
     async (username, password, done) => {
       try {
 
-        console.log("apple");
         const user = await UserModel.findOneByEmail(username);
 
         // If no user found, reject
