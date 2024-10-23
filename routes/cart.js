@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+const CartModel = require('../models/cart');
+const OrderModel = require('../models/order');
+const CartItemModel = require('../models/cartItem');
 //const CartService = require('../services/CartService');
 
 //const CartServiceInstance = new CartService();
@@ -99,7 +102,7 @@ module.exports = (app, passport) => {
 
       const { cartId, paymentInfo } = req.body; 
 
-      const stripe = require('stripe')('sk_test_FOY6txFJqPQvJJQxJ8jpeLYQ');
+      //const stripe = require('stripe')('sk_test_FOY6txFJqPQvJJQxJ8jpeLYQ');
 
       // Load cart items
       const cartItems = await CartItemModel.find(cartId);
