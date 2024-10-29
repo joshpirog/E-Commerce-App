@@ -102,7 +102,7 @@ module.exports = (app, passport) => {
 
       const { cartId, paymentInfo } = req.body; 
 
-      //const stripe = require('stripe')('sk_test_FOY6txFJqPQvJJQxJ8jpeLYQ');
+      //const stripe = require('stripe')('123456');
 
       // Load cart items
       const cartItems = await CartItemModel.find(cartId);
