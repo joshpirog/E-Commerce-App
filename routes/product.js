@@ -9,7 +9,7 @@ const ProductModel = require('../models/product');
 
 module.exports = (app) => {
 
-    app.use('/products', router);
+    app.use('/api/products', router);
 
     router.get('/', async (req, res, next) => {
         try {

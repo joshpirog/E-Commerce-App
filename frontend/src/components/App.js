@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import './App.css';
 
 import Header from './Header/Header';
-//import Home from '../routes/Home/Home';
+import Home from '../routes/Home/Home';
 
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
-        {/* <Route exact path='/' component={Home} /> */}
+          <Route exact path='/' element={<Home/>} />
         </Routes>
       </Router>
     </div>
